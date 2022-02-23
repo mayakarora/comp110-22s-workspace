@@ -2,7 +2,7 @@
 
 __author__ = "730410153"
 
-from turtle import Turtle, colormode, done
+from turtle import Turtle, colormode
 
 
 def main() -> None:
@@ -16,7 +16,7 @@ def main() -> None:
 
 
 def grass(x: int, y: int) -> None:
-    "The scene starts with soome grass for the animals."
+    """The scene starts with soome grass for the animals."""
     grass: Turtle = Turtle()
     colormode(255)
     grass.color("green")
