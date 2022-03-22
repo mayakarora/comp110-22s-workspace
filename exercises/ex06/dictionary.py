@@ -1,4 +1,4 @@
-"""Docstring"""
+"""Functions that use dictionaries."""
 
 
 __author__ = "730410153"
@@ -6,7 +6,7 @@ __author__ = "730410153"
 
 def invert(x: dict[str, str]) -> dict[str, str]:
     """This function swaps the keys and value of a dictionary."""
-    result: dict = {}
+    result: dict[str, str] = {}
     for key in x:
         if x[key] in result:
             raise KeyError("Error, duplicate keys are present.")
@@ -17,7 +17,7 @@ def invert(x: dict[str, str]) -> dict[str, str]:
 
 def favorite_color(colors: dict[str, str]) -> str:
     """This function returns the most frequent color."""
-    my_dict: dict = {}
+    my_dict: dict[str, int] = {}
     for key in colors:
         if colors[key] in my_dict:
             my_dict[colors[key]] += 1
@@ -35,7 +35,7 @@ def favorite_color(colors: dict[str, str]) -> str:
 def count(values: list[str]) -> dict[str, int]:
     """This function produces a dictionary of the frequency of the items in the given list."""
     i: int = 0
-    counts: dict = {}
+    counts: dict[str, int] = {}
     while i < len(values):
         if values[i] in counts:
             counts[values[i]] += 1

@@ -1,4 +1,4 @@
-"""Docstring"""
+"""Tests for dictionary functions."""
 
 __author__ = "730410153"
 
