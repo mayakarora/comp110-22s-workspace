@@ -38,15 +38,18 @@ def columnar(row_table: list[dict[str, str]]) -> dict[str, list[str]]:
 def head(unmutated: dict[str, list[str]], y: int) -> dict[str, list[str]]:
     """Allows you to see some initial rows of data."""
     visual: dict[str, list[str]] = {}
-    if y > len(unmutated):
-        return unmutated
+    if y == 0:
+        return visual
     for key in unmutated:
         values: list[str] = []
         i: int = 0
         while i < y:
-            values.append(unmutated[key][i])
+            for item in unmutated[key]:
+                values.append(item)
+                visual[key] = values
             i += 1
-        visual[key] = values
+    for key in visual:
+        visual[key] = unmutated[key]
     return visual
 
 
@@ -61,11 +64,11 @@ def select(unchanged: dict[str, list[str]], copy: list[str]) -> dict[str, list[s
 def concat(one: dict[str, list[str]], two: dict[str, list[str]]) -> dict[str, list[str]]:
     """Produces a new column-format table that combines two other column-format tables."""
     combined: dict[str, list[str]] = {}
-    i: int = 0
     for key in one:
-        combined[key] = one[key]
+        one[key] = combined[key]
     for key in two:
-        if key in combined:
+        if combined[key] == two[key]:
+            i: int = 0
             add: list[str] = two[key]
             while i < len(two[key]):
                 combined[key].append(add[i])
