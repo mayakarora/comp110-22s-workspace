@@ -38,18 +38,15 @@ def columnar(row_table: list[dict[str, str]]) -> dict[str, list[str]]:
 def head(unmutated: dict[str, list[str]], y: int) -> dict[str, list[str]]:
     """Allows you to see some initial rows of data."""
     visual: dict[str, list[str]] = {}
-    if y == 0:
-        return visual
+    if y > len(unmutated):
+        return unmutated
     for key in unmutated:
         values: list[str] = []
         i: int = 0
         while i < y:
-            for item in unmutated[key]:
-                values.append(item)
-                visual[key] = values
+            values.append(unmutated[key][i])
             i += 1
-    for key in visual:
-        visual[key] = unmutated[key]
+        visual[key] = values
     return visual
 
 
@@ -81,13 +78,9 @@ def concat(one: dict[str, list[str]], two: dict[str, list[str]]) -> dict[str, li
 def count(values: list[str]) -> dict[str, int]:
     """Creates a dictionary that shows the frequency of the values from the original list."""
     frequency: dict[str, int] = {}
-    i: int = 0
     for item in values:
-        counter: int = 1
-        if values[i] in frequency:
-            counter += 1
+        if item in frequency:
+            frequency[item] += 1
         else:
-            counter = 1
-    for key in frequency:
-        counter = frequency[key]
+            frequency[item] = 1
     return frequency
